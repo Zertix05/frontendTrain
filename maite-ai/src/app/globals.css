@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Manrope:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-start: #faf7f5;
+  --bg-end: #ffeef5;
+  --card: rgba(255, 255, 255, 0.7);
+  --copy: #2b2530;
+  --muted: #efe9ee;
+  --primary: #f55c93;
+  --secondary: #e4b2c0;
+  --accent: #fff3a8;
+  --pink-light: #ffeef5;
+  --peach: #ffd4c4;
+  --yellow: #ffd89c;
+
+  --font-heading: 'Yeseva One', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: var(--copy);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.bg-noise {
+  background-image: repeating-radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.12) 0,
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 4px 4px;
+}
+
+/* Стили для международного телефонного инпута */
+.react-international-phone-input-container {
+  width: 100%;
+}
+
+.react-international-phone-input-container .react-international-phone-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.react-international-phone-input-container .react-international-phone-input:focus {
+  border-color: #f55c93;
+  box-shadow: 0 0 0 2px rgba(245, 92, 147, 0.1);
+}
+
+.react-international-phone-country-selector-button {
+  padding: 0.5rem !important;
+  border-radius: 0.75rem 0 0 0.75rem !important;
+  border-right: 1px solid rgba(43, 37, 48, 0.15) !important;
+  background-color: white !important;
+  height: 48px !important;
+}
+
+.react-international-phone-country-selector-button:hover {
+  background-color: rgba(245, 92, 147, 0.05) !important;
+}
+
+.react-international-phone-country-selector-dropdown {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  max-height: 300px !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background-color: rgba(245, 92, 147, 0.1) !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item--selected {
+  background-color: rgba(245, 92, 147, 0.15) !important;
+}

@@ -1,0 +1,94 @@
+
+````markdown
+
+---
+
+## Требования
+
+- Сервер с Linux (Ubuntu / Debian)
+- Docker >= 20.x
+- Docker Compose >= 2.x
+- Nginx
+
+---
+
+
+```bash
+git clone <REPO_URL>
+cd maite2
+```
+
+
+```bash
+# Сборка образа
+docker-compose build
+
+# Запуск контейнера в фоне
+docker-compose up -d
+
+# Проверка контейнера
+docker ps
+```
+
+Теперь приложение доступно по адресу:
+
+```
+http://localhost:3000
+```
+
+Если на сервере, можно использовать публичный IP или домен.
+
+
+Создайте конфиг для вашего сайта:
+
+```nginx
+server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Для статики Next.js (если standalone сборка)
+    location /_next/static/ {
+        proxy_pass http://localhost:3000/_next/static/;
+        proxy_set_header Host $host;
+    }
+}
+```
+
+* Замените `example.com` на ваш домен.
+* Если SSL (https) — лучше использовать `certbot` и добавить `listen 443 ssl;` и сертификаты.
+
+
+
+```bash
+sudo nginx -t        # Проверка конфигурации
+sudo systemctl reload nginx
+```
+
+
+```bash
+# Остановить
+docker-compose down
+
+# Перезапустить
+docker-compose restart
+
+# Логи
+docker-compose logs -f
+```
+
+```bash
+# Пересобрать контейнер после изменений
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+

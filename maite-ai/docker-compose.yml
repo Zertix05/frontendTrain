@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maite-web
+    ports:
+      - "${PORT}:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      PORT: ${PORT}
+      HOSTNAME: ${HOSTNAME}
+    restart: unless-stopped
+    networks:
+      - maite-network
+
+networks:
+  maite-network:
+    driver: bridge

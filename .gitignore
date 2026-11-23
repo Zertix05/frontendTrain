@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+
+# Build / cache
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.turbo/
+.expo/
+.expo-shared/
+web-build/
+*.tsbuildinfo
+
+# Native / mobile
+android/.gradle/
+android/app/build/
+ios/Pods/
+ios/build/
+*.jks
+*.keystore
+
+# Logs / OS / IDE
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Coverage / test
+coverage/
+.nyc_output/
+
+# Misc
+*.local
+.vercel
+.terraform/
+
+# Nested project git metadata (kept locally, not pushed)
+.git_nested_bak/
